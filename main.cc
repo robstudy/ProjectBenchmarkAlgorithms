@@ -53,5 +53,17 @@ int main()
 	
 	newArray.Display();
 	
+		
+	std::cout << "Merge Sort!\n";
+	for(int i = 0; i < 10; i++)
+	{
+		newArray.SetElement(i, rand()%100);
+	}
+	
+	newArray.Display();
+	
+	QuickSort(newArray.GetArray(), 0, newArray.GetSize()-1);
+	
+	newArray.Display();
 	return 0;
 }
