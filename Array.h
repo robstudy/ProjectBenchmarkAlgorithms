@@ -18,6 +18,9 @@ class Array
 		int Search(T);
 		void Display();
 		
+		//Return self
+		T* GetArray();
+		
 	private:
 		T* A; //The array
 		int size; //the size
@@ -136,4 +139,9 @@ void Array<T>::Display()
 	}
 	
 	std::cout << '\n';
-}
+};
+
+template <class T>
+T* Array<T>::GetArray(){
+	return A;
+};
