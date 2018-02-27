@@ -10,6 +10,7 @@ class Array
 		
 		//Accessors + Modifiers
 		int GetSize();
+		void SetSize(int);
 		T GetElement(int);
 		void SetElement(int, T);
 		bool Find(T);
@@ -49,6 +50,15 @@ Array<T>::~Array()
 
 template <class T>
 int Array<T>::GetSize() { return size; };
+
+template <class T>
+void Array<T>::SetSize(int newSize)
+{
+	delete[] A;
+	size = newSize;
+	A = new T[size];
+	for (int i = 0; i < size; i++) A[i] = 0;
+};
 
 template <class T>
 T Array<T>::GetElement(int index)

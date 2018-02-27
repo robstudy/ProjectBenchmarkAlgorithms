@@ -39,7 +39,7 @@ Code(70%)</b>
 	</ol>
 <b>Functions</b>
 	<ol>
-		<li>The measurement functions<li>
+		<li>The measurement functions</li>
 		<li>Generate of the simulation (main function)</li>
 		<li>Creation of a sorted array</li>
 		<li>Creation of a completely shuffled array</li>

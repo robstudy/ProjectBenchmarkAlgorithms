@@ -2,68 +2,61 @@
 #include "Array.h"
 #include "SortingAlgorithms.h"
 
+enum Sorter { Insertion, Selection, Bubble, Quick, Merge };
+enum ArrayType { Char, Integer, Float, Double };
+
+ArrayType setArrayType();
+
 int main() 
 {
-	std::cout << "Insertion Sort!\n";
-	Array<int> newArray(10);
+	//input
+	char input;
+	int arraySize;
 	
-	for(int i = 0; i < 10; i++)
-	{
-		newArray.SetElement(i, rand()%100);
-	}
-	newArray.Display();
+	//enums for sorting and array type;
+	ArrayType arrayType;
+	Sorter sortAlgorithm;
+	Array<char> charArray;
+	Array<int> intArray;
+	Array<float> floatArray;
+	Array<double> doubleArray;
 	
-	InsertionSort(newArray.GetArray(), newArray.GetSize());
+	arrayType = setArrayType();
 	
-	newArray.Display();
-	
-	std::cout << "Selection Sort!\n";
-	for(int i = 0; i < 10; i++)
-	{
-		newArray.SetElement(i, rand()%100);
-	}
-	
-	newArray.Display();
-	
-	SelectionSort(newArray.GetArray(), newArray.GetSize());
-	
-	newArray.Display();
-	
-	std::cout << "Bubble Sort!\n";
-	for(int i = 0; i < 10; i++)
-	{
-		newArray.SetElement(i, rand()%100);
-	}
-	
-	newArray.Display();
-	
-	BubbleSort(newArray.GetArray(), newArray.GetSize());
-	
-	newArray.Display();
-	
-	std::cout << "Quick Sort!\n";
-	for(int i = 0; i < 10; i++)
-	{
-		newArray.SetElement(i, rand()%100);
-	}
-	
-	newArray.Display();
-	
-	QuickSort(newArray.GetArray(), 0, newArray.GetSize());
-	
-	newArray.Display();
-	
+	if(arrayType == Char){
 		
-	std::cout << "Merge Sort!\n";
-	for(int i = 0; i < 10; i++)
-	{
-		newArray.SetElement(i, rand()%100);
+	} 
+	else if(arrayType == Integer) {
+		intArray.SetSize(10);
 	}
 	
-	newArray.Display();
-	
-	QuickSort(newArray.GetArray(), 0, newArray.GetSize()-1);
-	
-	newArray.Display();
 	return 0;
-}
+};
+
+//Select Array Type
+ArrayType setArrayType()
+{
+	char input;
+	bool selectionArrayType = true;
+	while(selectionArrayType) 
+	{
+		std::cout << "Select array type 'c', 'i', 'f', 'd'; Char, Int, Float, Double\n";
+		std::cin >> input;
+		switch(input){
+			case 'c':
+				std::cout << "Array is char!\n";
+				return Char;
+			case 'i':
+				std::cout << "Array is int!\n";
+				return Integer;
+			case 'f':
+				std::cout << "Array is float!\n";
+				return Float;
+			case 'd':
+				std::cout << "Array is double!\n";
+				return Double;
+			default:
+				break;
+		}
+	}
+};
