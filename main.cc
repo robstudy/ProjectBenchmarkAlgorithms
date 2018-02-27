@@ -41,5 +41,17 @@ int main()
 	
 	newArray.Display();
 	
+	std::cout << "Quick Sort!\n";
+	for(int i = 0; i < 10; i++)
+	{
+		newArray.SetElement(i, rand()%100);
+	}
+	
+	newArray.Display();
+	
+	QuickSort(newArray.GetArray(), 0, newArray.GetSize());
+	
+	newArray.Display();
+	
 	return 0;
 }
