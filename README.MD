@@ -28,34 +28,39 @@
 
 <b>Marking scheme
 Code(70%)</b>
-	1. The project is submitted with a readme file that explains what it contains, who has done the project, and it tells how to use the files.
-	2. The project compiles.
-	3. The project is commented (e.g., head of the functions)
-	4. The project can run with the selection of an option to select the type of sorting algorithm, the type of array, and it's size. (it can be set directly in a program with comments to tell what parameters need to change to generate the results, or a subset of the results).
-	5. The project contains a class Array that you have created.
-	6. The class Array uses template.
-	7. The project uses the prototype design pattern (even if you have only 1 data structure in this project, the class array is part of the multiple classes you are doing in the labs).
-
-Functions
-	1. The measurement functions
-	2. Generate of the simulation (main function)
-	3. Creation of a sorted array
-	4. Creation of a completely shuffled array
-	5. Creation of a shuffled array at 10%
-	6. Insertion sort
-	7. Selection sort
-	8. Bubble sort
-	9. Partition function (for Quick sort)
-	10. Quick sort
-	11. Merge sorted array (for Merge sort)
-	12. Merge sort
+	<ol>
+		<li>The project is submitted with a readme file that explains what it contains, who has done the project, and it tells how to use the files.</li>
+		<li>The project compiles.</li>
+		<li>The project is commented (e.g., head of the functions)</li>
+		<li>The project can run with the selection of an option to select the type of sorting algorithm, the type of array, and it's size. (it can be set directly in a program with comments to tell what parameters need to change to generate the results, or a subset of the results).</li>
+		<li>The project contains a class Array that you have created.</li>
+		<li>The class Array uses template.</li>
+		<li>The project uses the prototype design pattern (even if you have only 1 data structure in this project, the class array is part of the multiple classes you are doing in the labs).</li>
+	</ol>
+<b>Functions</b>
+	<ol>
+		<li>The measurement functions<li>
+		<li>Generate of the simulation (main function)</li>
+		<li>Creation of a sorted array</li>
+		<li>Creation of a completely shuffled array</li>
+		<li>Creation of a shuffled array at 10%</li>
+		<li>Insertion sort</li>
+		<li>Selection sort</li>
+		<li>Bubble sort</li>
+		<li>Partition function (for Quick sort)</li>
+		<li>Quick sort</li>
+		<li> Merge sorted array (for Merge sort)</li>
+		<li>Merge sort</li>
+	</ol>
 
 <b>Report</b>(30%) The report should not contain any snippet of code in the report.
-	1. Style and presentation
-	2. Appropriate structure
-	3. Introduction goal of the project
-	4. Methods: Brief reminder about what was implemented
-	5. Results: Tables and/or Figures (bar graph) with the values (mean and standard deviation) for each condition, each method with captions. Presentation of the results in the tables. Each figure/table is properly referenced and described in the main text.
-	6. Discussion: Theoretical analysis vs. the time you have observed
-	7. Interpretation of the results (stat analysis)
-	8. Conclusion
+	<ol>
+		<li>Style and presentation</li>
+		<li>Appropriate structure</li>
+		<li>Introduction goal of the project</li>
+		<li>Methods: Brief reminder about what was implemented</li>
+		<li>Results: Tables and/or Figures (bar graph) with the values (mean and standard deviation) for each condition, each method with captions. Presentation of the results in the tables. Each figure/table is properly referenced and described in the main text.</li>
+		<li>Discussion: Theoretical analysis vs. the time you have observed</li>
+		<li>Interpretation of the results (stat analysis)</li>
+		<li>Conclusion</li>
+	</ol>
