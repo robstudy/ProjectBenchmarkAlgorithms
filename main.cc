@@ -11,7 +11,24 @@ Sorter setSorter();
 int setArraySize();
 template <typename T>
 void makeRandom(T *A, ArrayType arrayType, int size) {
-	
+	int i;
+	switch(arrayType){
+		case Char:
+			for(i = 0; i < size; i++) A[i] = 'a' + rand() % ('Z' - 'a' + 1);
+			break;
+		case Integer:
+			for(i = 0; i < size; i++) A[i] = rand()%100;
+			break;
+		case Float:
+			for(i = 0; i < size; i++) A[i] = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/100));
+			break;
+		case Double:
+			for(i = 0; i < size; i++) A[i] = static_cast <double> (rand()) / (static_cast <double> (RAND_MAX/100));
+			break;
+		default:
+			std::cout << "Error no size chosen\n";
+			break;
+	}	
 };	
 template <typename T>
 void sortArray(T *A, Sorter sortAlgorithm, int size) {
@@ -196,11 +213,3 @@ int setArraySize() {
 		return input;
 	}
 };
-
-//Randomize the array
-//template <typename T>
-//void makeRandom(T *A, ArrayType arrayType, int size); 
-
-//Sort Array
-//template <typename T>
-//void sortArray(T *A, ArrayType arrayType); 
