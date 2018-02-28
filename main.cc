@@ -10,13 +10,40 @@ ArrayType setArrayType();
 Sorter setSorter();
 int setArraySize();
 template <typename T>
-void randomizer(Array<T>, ArrayType, int); 
+void makeRandom(T *A, ArrayType arrayType, int size) {
+	
+};	
+template <typename T>
+void sortArray(T *A, Sorter sortAlgorithm, int size) {
+	switch(sortAlgorithm) {
+		case Insertion:
+			InsertionSort(A, size);
+			break;
+		case Selection:
+			SelectionSort(A, size);
+			break;
+		case Bubble:
+			BubbleSort(A, size);
+			break;
+		case Quick:
+			QuickSort(A, 0, size);
+			break;
+		case Merge:
+			MergeSort(A, 0, size-1);
+			break;
+		default:
+			break;
+	}
+};	
 
 int main() 
 {
 	//input
 	char input;
 	int arraySize;
+	
+	//For input while loop
+	bool programLoop = true;
 	
 	//enums for sorting and array type;
 	ArrayType arrayType;
@@ -43,6 +70,7 @@ int main()
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cin.clear();
 	
+	
 	switch(arrayType){
 		case Char:
 			charArray.SetSize(arraySize);
@@ -59,6 +87,40 @@ int main()
 		default:
 			std::cout << "Error no size chosen\n";
 			break;
+	}
+	
+	//Program loop
+	while(programLoop){
+		std::cout << "Choose the following:\n'p':Print Array\n'r':Randomize Array\n's':Sort Array\n'c':Choose Different Algorithm\n'q':Quit\n";
+		std::cin >> input;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		switch(input) {
+			case 'c':
+				sortAlgorithm = setSorter();
+				break;
+			case 'p':
+				if(arrayType == Char) charArray.Display();
+				else if(arrayType == Integer) intArray.Display();
+				else if(arrayType == Float) floatArray.Display();
+				else if(arrayType == Double) doubleArray.Display();
+				break;
+			case 'r':
+				if(arrayType == Char) makeRandom(charArray.GetArray(), arrayType, arraySize);
+				else if(arrayType == Integer) makeRandom(intArray.GetArray(), arrayType, arraySize);
+				else if(arrayType == Float) makeRandom(floatArray.GetArray(), arrayType, arraySize);
+				else if(arrayType == Double) makeRandom(doubleArray.GetArray(), arrayType, arraySize);
+				break;
+			case 's':
+				if(arrayType == Char) sortArray(charArray.GetArray(), sortAlgorithm, arraySize);
+				else if(arrayType == Integer) sortArray(intArray.GetArray(), sortAlgorithm, arraySize);
+				else if(arrayType == Float) sortArray(floatArray.GetArray(), sortAlgorithm, arraySize);
+				else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
+				break;
+			case 'q':
+				programLoop = false;
+			default:
+				break;
+		}
 	}
 	
 	return 0;
@@ -134,3 +196,11 @@ int setArraySize() {
 		return input;
 	}
 };
+
+//Randomize the array
+//template <typename T>
+//void makeRandom(T *A, ArrayType arrayType, int size); 
+
+//Sort Array
+//template <typename T>
+//void sortArray(T *A, ArrayType arrayType); 
