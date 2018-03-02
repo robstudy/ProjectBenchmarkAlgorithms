@@ -1,57 +1,13 @@
 #include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <chrono>
 #include "Array.h"
-#include "SortingAlgorithms.h"
-#include <limits>
-
-enum Sorter { Insertion, Selection, Bubble, Quick, Merge };
-enum ArrayType { Char, Integer, Float, Double };
+#include "BenchmarkFunctions.h"
 
 ArrayType setArrayType();
 Sorter setSorter();
 int setArraySize();
-template <typename T>
-void makeRandom(T *A, ArrayType arrayType, int size) {
-	int i;
-	switch(arrayType){
-		case Char:
-			for(i = 0; i < size; i++) A[i] = 'a' + rand() % ('Z' - 'a' + 1);
-			break;
-		case Integer:
-			for(i = 0; i < size; i++) A[i] = rand()%100;
-			break;
-		case Float:
-			for(i = 0; i < size; i++) A[i] = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/100));
-			break;
-		case Double:
-			for(i = 0; i < size; i++) A[i] = static_cast <double> (rand()) / (static_cast <double> (RAND_MAX/100));
-			break;
-		default:
-			std::cout << "Error no size chosen\n";
-			break;
-	}	
-};	
-template <typename T>
-void sortArray(T *A, Sorter sortAlgorithm, int size) {
-	switch(sortAlgorithm) {
-		case Insertion:
-			InsertionSort(A, size);
-			break;
-		case Selection:
-			SelectionSort(A, size);
-			break;
-		case Bubble:
-			BubbleSort(A, size);
-			break;
-		case Quick:
-			QuickSort(A, 0, size);
-			break;
-		case Merge:
-			MergeSort(A, 0, size-1);
-			break;
-		default:
-			break;
-	}
-};	
 
 int main() 
 {
