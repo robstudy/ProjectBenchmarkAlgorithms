@@ -10,6 +10,8 @@
 
 enum Sorter { Insertion, Selection, Bubble, Quick, Merge };
 enum ArrayType { Char, Integer, Float, Double };
+enum BenchArraySize { Ten = 10, Thousand = 1000, TenThousand = 10000, HThousand = 100000, Million = 1000000 };
+enum BenchArrayType { Sorted, FullShuffle, Reverse, TenPercentUnsorted };
 
 template <typename T>
 void makeRandom(T *A, ArrayType arrayType, int size) {
