@@ -1,6 +1,7 @@
 #pragma once
+#include "DataStructure.h"
 template <class T>
-class Array
+class Array:public DataStructure
 {
 	public:
 		//constructor

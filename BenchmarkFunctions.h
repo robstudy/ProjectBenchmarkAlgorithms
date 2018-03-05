@@ -43,7 +43,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 				InsertionSort(A, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " nanosecond\n";
+				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 			}
 			break;
 		case Selection:
@@ -51,7 +51,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 				SelectionSort(A, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " nanosecond\n";
+				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 			}
 			break;
 		case Bubble:
@@ -59,7 +59,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 				BubbleSort(A, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " nanosecond\n";
+				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 			}
 			break;
 		case Quick:
@@ -75,7 +75,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 				MergeSort(A, 0, size-1);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " nanosecond\n";
+				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 			}
 			break;
 		default:
