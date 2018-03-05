@@ -82,3 +82,52 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 			break;
 	}
 };	
+
+template <typename T>
+void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchArrayType benchType) {
+	int i;
+	if ( benchType == Sorted ) {
+		switch(arrayType){
+		case Char:
+			for(i = 0; i < arraySize; i++) A[i] = 'a';
+			break;
+		case Integer:
+			for(i = 0; i < arraySize; i++) A[i] = i;
+			break;
+		case Float:
+			for(i = 0; i < arraySize; i++) A[i] = static_cast <float> (i);
+			break;
+		case Double:
+			for(i = 0; i < arraySize; i++) A[i] = static_cast <double> (i);
+			break;
+		default:
+			std::cout << "Error no size chosen\n";
+			break;
+		}	
+	} 
+	else if ( benchType == FullShuffle ) {
+		makeRandom(A, arrayType, benchType);
+	}
+	else if ( benchType == Reverse) {
+		switch(arrayType){
+		case Char:
+			//for(i = 0; i < arraySize; i++) A[i] = 'a';
+			break;
+		case Integer:
+			for(i = 0; i < arraySize; i++) A[i] = arraySize - i;
+			break;
+		case Float:
+			for(i = 0; i < arraySize; i++) A[i] = static_cast <float> (arraySize - i);
+			break;
+		case Double:
+			for(i = 0; i < arraySize; i++) A[i] = static_cast <double> (arraySize - i);
+			break;
+		default:
+			std::cout << "Error no size chosen\n";
+			break;
+		}
+	}
+	else if ( benchType == TenPercentUnsorted) {
+		makeRandom(A, arrayType, benchType%10);	
+	}
+};
