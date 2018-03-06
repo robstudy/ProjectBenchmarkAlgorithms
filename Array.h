@@ -1,5 +1,6 @@
 #pragma once
 #include "DataStructure.h"
+#include <math.h>
 template <class T>
 class Array:public DataStructure
 {
@@ -20,6 +21,10 @@ class Array:public DataStructure
 		void Insert(T);
 		int Search(T);
 		void Display();
+		T GetMax();
+		T GetMin();
+		double GetAverage();
+		double GetStandardDeviation();
 		
 		//Return self
 		T* GetArray();
@@ -151,6 +156,48 @@ void Array<T>::Display()
 	}
 	
 	std::cout << '\n';
+};
+
+template <class T> 
+T Array<T>::GetMax() {
+	T max = A[0];
+	for (int i = 1; i < size; i++) {
+		if (A[i] > max) 
+			max = A[i];
+	}
+	return max;
+};
+
+template <class T>
+T Array<T>::GetMin() {
+	T min = A[0];
+	for (int i = 1; i < size; i ++) {
+		if (A[i] < min)
+			min = A[i];
+	}
+	return min;
+};
+
+template <class T>
+double Array<T>::GetAverage() {
+	double result = 0;
+	for (int i = 0; i < size; i++)
+		result += (double)A[i];
+	result /= size;
+	return result;
+};
+
+template <class T>
+double Array<T>::GetStandardDeviation() {
+	double mean = GetAverage();
+	double result = 0;
+	for (int i = 0; i < size; i++) {
+		double tmp = (double)A[i] - mean;
+		result += tmp*tmp;
+	}
+	result /= size;
+	result = sqrt(result);
+	return result;
 };
 
 template <class T>
