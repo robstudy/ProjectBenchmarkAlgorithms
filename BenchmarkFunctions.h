@@ -5,14 +5,21 @@
 #include "SortingAlgorithms.h"
 #include "Array.h"
 
+//Enums to keep track benchmarking states
 enum Sorter { Insertion, Selection, Bubble, Quick, Merge };
-enum ArrayType { Integer, Float, Double };
-enum BenchArraySize { Ten = 10, Thousand = 1000, TenThousand = 10000, HThousand = 100000, Million = 1000000 };
-enum BenchArrayType { Sorted, FullShuffle, Reverse, TenPercentUnsorted };
 
+enum ArrayType { Integer, Float, Double };
+
+enum BenchArraySize { Ten = 10, Thousand = 1000, TenThousand = 10000, HThousand = 100000, Million = 1000000 };
+
+enum BenchShuffleType { Sorted, FullShuffle, Reverse, TenPercentUnsorted };
+
+//Make array random, can rand Int, Float, Double
 template <typename T>
 void makeRandom(T *A, ArrayType arrayType, int size) {
+	
 	int i;
+	
 	switch(arrayType){
 		case Integer:
 			for(i = 0; i < size; i++) A[i] = rand()%100;
@@ -26,11 +33,15 @@ void makeRandom(T *A, ArrayType arrayType, int size) {
 		default:
 			std::cout << "Error no size chosen\n";
 			break;
-	}	
+	}
 };	
 
+//Function Sends array to sorting algorithms and returns the time in microseconds of runtime 
+//Outputs microsecond time 
+//Time measured with chrono steady_clock
 template <typename T>
 int sortArray(T *A, Sorter sortAlgorithm, int size) {
+	
 	switch(sortAlgorithm) {
 		case Insertion:
 			{
@@ -82,49 +93,57 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 	}
 };	
 
+//Order the array based on the benchtype = Sorted, FullShuffle, Reverse or TenPercentUnsorted
 template <typename T>
-void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchArrayType benchType) {
+void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchShuffleType benchType) {
+	
 	int i;
-	if ( benchType == Sorted ) {
+	
+	if (benchType == Sorted) {
+		
 		switch(arrayType){
-		case Integer:
-			for(i = 0; i < arraySize; i++) A[i] = i;
-			break;
-		case Float:
-			for(i = 0; i < arraySize; i++) A[i] = static_cast <float> (i);
-			break;
-		case Double:
-			for(i = 0; i < arraySize; i++) A[i] = static_cast <double> (i);
-			break;
-		default:
-			std::cout << "Error no size chosen\n";
-			break;
-		}	
+			case Integer:
+				for(i = 0; i < arraySize; i++) A[i] = i;
+				break;
+			case Float:
+				for(i = 0; i < arraySize; i++) A[i] = static_cast <float> (i);
+				break;
+			case Double:
+				for(i = 0; i < arraySize; i++) A[i] = static_cast <double> (i);
+				break;
+			default:
+				std::cout << "Error no size chosen\n";
+				break;
+		}
 	} 
-	else if ( benchType == FullShuffle ) {
+	else if (benchType == FullShuffle) {
+		
 		makeRandom(A, arrayType, benchType);
 	}
-	else if ( benchType == Reverse) {
+	else if (benchType == Reverse) {
+		
 		switch(arrayType){
-		case Integer:
-			for(i = 0; i < arraySize; i++) A[i] = arraySize - i;
-			break;
-		case Float:
-			for(i = 0; i < arraySize; i++) A[i] = static_cast <float> (arraySize - i);
-			break;
-		case Double:
-			for(i = 0; i < arraySize; i++) A[i] = static_cast <double> (arraySize - i);
-			break;
-		default:
-			std::cout << "Error no size chosen\n";
-			break;
+			case Integer:
+				for(i = 0; i < arraySize; i++) A[i] = arraySize - i;
+				break;
+			case Float:
+				for(i = 0; i < arraySize; i++) A[i] = static_cast <float> (arraySize - i);
+				break;
+			case Double:
+				for(i = 0; i < arraySize; i++) A[i] = static_cast <double> (arraySize - i);
+				break;
+			default:
+				std::cout << "Error no size chosen\n";
+				break;
 		}
 	}
 	else if ( benchType == TenPercentUnsorted) {
+		
 		makeRandom(A, arrayType, benchType%10);	
 	}
 };
 
+//Input takes choice of which sorting algorithm to use, returns enum type Bubble, Insertion, Selection, Merge, Quick
 Sorter setAlgorithm(){
 	
 	std::cout << "Choose an algorithm to benchmark:\nb:Bubble\ni:Insertion\ns:Selection\nm:Merge\nq:Quick\n";
@@ -149,9 +168,11 @@ Sorter setAlgorithm(){
 	}
 };
 
+//Input takes cases 1 - 5
+//Returns enum type for array sizes 10, 1000, 10000, 100000, 1000000 - Ten, Thousand, TenThousand, HThousand, Million
 BenchArraySize setBenchArraySize(){
 	
-	std::cout << "Choose an array size\n'1':10\'2':1000\n'3':10000\n'4'.100000\n'5'1000000\n";
+	std::cout << "Choose an array size\n1. 10\n2. 1000\n3. 10000\n4. 100000\n5. 1000000\n";
 	
 	int input;
 	
@@ -173,22 +194,57 @@ BenchArraySize setBenchArraySize(){
 	}
 };
 
+//Set BenchShuffleType Sorted, FullShuffle, Reverse, TenPercentUnsorted and return it
+BenchShuffleType setBenchShuffleType(){
+	
+	int input;
+	
+	std::cout << "Choose shuffle type:\n1. Sorted\n2. FullShuffle\n3. Reverse\n4.TenPercentUnsorted\n";
+	
+	std::cin >> input;
+	
+	switch(input) {
+		case 1:
+			return Sorted;
+		case 2:
+			return FullShuffle;
+		case 3: 
+			return Reverse;
+		case 4:
+			return TenPercentUnsorted;
+		default:
+			setBenchShuffleType();
+	}
+};
+
+//Takes all benchmark inputs, outputs average and standard deviation at the end of 100 benchmark tests
 void Benchmark() {
 	
+	//ArrayType arrayType = setArrayType();
+	
 	Sorter sorter = setAlgorithm();
+	
 	BenchArraySize benchSize = setBenchArraySize();
+	
+	BenchShuffleType shuffleType = setBenchShuffleType();
+	
 	char input;
+	
 	bool benching = true;
+	
 	Array<int> arrayToSort;
+	
 	Array<int> benchArray;
 	
 	arrayToSort.SetSize(benchSize);
 	
 	for(int i = 0; i < 100; i++){
-		makeRandom(arrayToSort.GetArray(), Integer, benchSize);
+		
+		orderArray(arrayToSort.GetArray(), Integer, benchSize, shuffleType);
 		benchArray.Insert(sortArray(arrayToSort.GetArray(), sorter, benchSize));
 	}
 	
 	std::cout << "The average for this sorting algorithm is : " << benchArray.GetAverage() << std::endl;
+	
 	std::cout << "The standard deviation is : " << benchArray.GetStandardDeviation() << std::endl;
-}
+};

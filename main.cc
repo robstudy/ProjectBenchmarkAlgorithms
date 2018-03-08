@@ -14,27 +14,34 @@ int main()
 	//input
 	char input;
 	
-	
-	std::cout << "Press 1 to go straight to benchmark test or 2 to play with array and sorting algorithms\n";
+	std::cout << "Press 1 to go straight to benchmark test or enter anything to play with array and sorting algorithms\n";
 	
 	std::cin >> input;
 	
 	if(input == '1') {
-		Benchmark();
-		return 0;
+		
+		while(true) {
+			
+			Benchmark();
+			
+			std::cout << "Benchmark again?\n1. Yes\n2. No\n";
+			
+			std::cin >> input;
+			
+			if(input != '1') return 0;
+		}
 	}
 		
 	int arraySize;
 	
 	//For input while loop
-	bool programLoop = true;
+	bool playLoop = true;
 	
 	//enums for sorting and array type;
 	ArrayType arrayType;
 	Sorter sortAlgorithm;
 	
 	//Initialize 4 types of array size 0
-	Array<char> charArray;
 	Array<int> intArray;
 	Array<float> floatArray;
 	Array<double> doubleArray;
@@ -45,7 +52,7 @@ int main()
 	std::cin.clear();
 	
 	//Set Sorting Algorithm 
-	sortAlgorithm = setSorter();
+	sortAlgorithm = setAlgorithm();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cin.clear();
 	
@@ -70,9 +77,9 @@ int main()
 			break;
 	}
 	
-	//Program loop
-	while(programLoop){
-		std::cout << "Choose the following:\n'p':Print Array\n'r':Randomize Array\n's':Sort Array\n'c':Choose Different Algorithm\n'q':Quit\n";
+	//Play loop
+	while(playLoop){
+		std::cout << "Choose the following:\n'b':Benchmark\n'p':Print Array\n'r':Randomize Array\n's':Sort Array\n'c':Choose Different Algorithm\n'q':Quit\n";
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		switch(input) {
@@ -93,13 +100,12 @@ int main()
 				else if(arrayType == Double) makeRandom(doubleArray.GetArray(), arrayType, arraySize);
 				break;
 			case 's':
-				//if(arrayType == Char) sortArray(charArray.GetArray(), sortAlgorithm, arraySize);
-				//else if(arrayType == Integer) sortArray(intArray.GetArray(), sortAlgorithm, arraySize);
-				//else if(arrayType == Float) sortArray(floatArray.GetArray(), sortAlgorithm, arraySize);
-				//else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
+				if(arrayType == Integer) sortArray(intArray.GetArray(), sortAlgorithm, arraySize);
+				else if(arrayType == Float) sortArray(floatArray.GetArray(), sortAlgorithm, arraySize);
+				else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
 				break;
 			case 'q':
-				programLoop = false;
+				playLoop = false;
 			default:
 				break;
 		}
@@ -114,7 +120,7 @@ ArrayType setArrayType()
 	char input;
 	while(true) 
 	{
-		std::cout << "Select array type:\n'c':Char\n'i':Int\n'f':Float\n'd':Double\n";
+		std::cout << "Select array type:\n'i':Int\n'f':Float\n'd':Double\n";
 		std::cin >> input;
 		switch(input){
 			case 'i':
