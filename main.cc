@@ -13,6 +13,17 @@ int main()
 {
 	//input
 	char input;
+	
+	
+	std::cout << "Press 1 to go straight to benchmark test or 2 to play with array and sorting algorithms\n";
+	
+	std::cin >> input;
+	
+	if(input == '1') {
+		Benchmark();
+		return 0;
+	}
+		
 	int arraySize;
 	
 	//For input while loop
@@ -45,9 +56,6 @@ int main()
 	
 	
 	switch(arrayType){
-		case Char:
-			charArray.SetSize(arraySize);
-			break;
 		case Integer:
 			intArray.SetSize(arraySize);
 			break;
@@ -75,14 +83,12 @@ int main()
 				Benchmark();
 				break;
 			case 'p':
-				if(arrayType == Char) charArray.Display();
-				else if(arrayType == Integer) intArray.Display();
+				if(arrayType == Integer) intArray.Display();
 				else if(arrayType == Float) floatArray.Display();
 				else if(arrayType == Double) doubleArray.Display();
 				break;
 			case 'r':
-				if(arrayType == Char) makeRandom(charArray.GetArray(), arrayType, arraySize);
-				else if(arrayType == Integer) makeRandom(intArray.GetArray(), arrayType, arraySize);
+				if(arrayType == Integer) makeRandom(intArray.GetArray(), arrayType, arraySize);
 				else if(arrayType == Float) makeRandom(floatArray.GetArray(), arrayType, arraySize);
 				else if(arrayType == Double) makeRandom(doubleArray.GetArray(), arrayType, arraySize);
 				break;
@@ -111,10 +117,6 @@ ArrayType setArrayType()
 		std::cout << "Select array type:\n'c':Char\n'i':Int\n'f':Float\n'd':Double\n";
 		std::cin >> input;
 		switch(input){
-			case 'c':
-				std::cout << "Array is char!\n";
-				return Char;
-				break;
 			case 'i':
 				std::cout << "Array is int!\n";
 				return Integer;

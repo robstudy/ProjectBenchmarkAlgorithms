@@ -1,15 +1,12 @@
 #pragma once
 
 #include <iostream>
-#include <algorithm>
-#include <ctime>
 #include <chrono>
-#include <limits>
 #include "SortingAlgorithms.h"
 #include "Array.h"
 
 enum Sorter { Insertion, Selection, Bubble, Quick, Merge };
-enum ArrayType { Char, Integer, Float, Double };
+enum ArrayType { Integer, Float, Double };
 enum BenchArraySize { Ten = 10, Thousand = 1000, TenThousand = 10000, HThousand = 100000, Million = 1000000 };
 enum BenchArrayType { Sorted, FullShuffle, Reverse, TenPercentUnsorted };
 
@@ -17,9 +14,6 @@ template <typename T>
 void makeRandom(T *A, ArrayType arrayType, int size) {
 	int i;
 	switch(arrayType){
-		case Char:
-			for(i = 0; i < size; i++) A[i] = 'a' + rand() % ('Z' - 'a' + 1);
-			break;
 		case Integer:
 			for(i = 0; i < size; i++) A[i] = rand()%100;
 			break;
@@ -93,9 +87,6 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchArrayT
 	int i;
 	if ( benchType == Sorted ) {
 		switch(arrayType){
-		case Char:
-			for(i = 0; i < arraySize; i++) A[i] = 'a';
-			break;
 		case Integer:
 			for(i = 0; i < arraySize; i++) A[i] = i;
 			break;
@@ -115,9 +106,6 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchArrayT
 	}
 	else if ( benchType == Reverse) {
 		switch(arrayType){
-		case Char:
-			//for(i = 0; i < arraySize; i++) A[i] = 'a';
-			break;
 		case Integer:
 			for(i = 0; i < arraySize; i++) A[i] = arraySize - i;
 			break;
