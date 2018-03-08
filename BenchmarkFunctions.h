@@ -146,22 +146,22 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchShuffl
 //Input takes choice of which sorting algorithm to use, returns enum type Bubble, Insertion, Selection, Merge, Quick
 Sorter setAlgorithm(){
 	
-	std::cout << "Choose an algorithm to benchmark:\nb:Bubble\ni:Insertion\ns:Selection\nm:Merge\nq:Quick\n";
+	std::cout << "Choose an algorithm to benchmark:\n1. Bubble\n2. Insertion\n3. Selection\n4. Merge\n5. Quick\n";
 	
-	char input;
+	int input;
 	
 	std::cin >> input;
 	
 	switch (input){
-		case 'b':
+		case 1:
 			return Bubble;
-		case 'i':
+		case 2:
 			return Insertion;
-		case 's':
+		case 3:
 			return Selection;
-		case 'm':
+		case 4:
 			return Merge;
-		case 'q':
+		case 5:
 			return Quick;
 		default:
 			setAlgorithm();
@@ -217,6 +217,27 @@ BenchShuffleType setBenchShuffleType(){
 	}
 };
 
+//Set ArrayType to Integer, Float, or Double
+ArrayType setArrayType() {
+	
+	int input;
+	
+	std::cout << "Choose array type:\n1. Integer\n2. Float\n3. Double\n";
+	
+	std::cin >> input;
+	
+	switch(input) {
+		case 1:
+			return Integer;
+		case 2:
+			return Float;
+		case 3:
+			return Double;
+		default:
+			setArrayType;
+	}
+};
+
 //Takes all benchmark inputs, outputs average and standard deviation at the end of 100 benchmark tests
 void Benchmark() {
 	
@@ -241,6 +262,7 @@ void Benchmark() {
 	for(int i = 0; i < 100; i++){
 		
 		orderArray(arrayToSort.GetArray(), Integer, benchSize, shuffleType);
+		
 		benchArray.Insert(sortArray(arrayToSort.GetArray(), sorter, benchSize));
 	}
 	
