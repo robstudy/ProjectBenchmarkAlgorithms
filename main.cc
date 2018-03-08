@@ -71,6 +71,9 @@ int main()
 			case 'c':
 				sortAlgorithm = setSorter();
 				break;
+			case 'b':
+				Benchmark();
+				break;
 			case 'p':
 				if(arrayType == Char) charArray.Display();
 				else if(arrayType == Integer) intArray.Display();

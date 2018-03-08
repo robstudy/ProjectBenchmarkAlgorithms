@@ -131,3 +131,67 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchArrayT
 		makeRandom(A, arrayType, benchType%10);	
 	}
 };
+
+Sorter setAlgorithm(){
+	
+	std::cout << "Choose an algorithm to benchmark:\nb:Bubble\ni:Insertion\ns:Selection\nm:Merge\nq:Quick\n";
+	
+	char input;
+	
+	std::cin >> input;
+	
+	switch (input){
+		case 'b':
+			return Bubble;
+		case 'i':
+			return Insertion;
+		case 's':
+			return Selection;
+		case 'm':
+			return Merge;
+		case 'q':
+			return Quick;
+		default:
+			setAlgorithm();
+	}
+};
+
+BenchArraySize setBenchArraySize(){
+	
+	std::cout << "Choose an array size\n'1':10\'2':1000\n'3':10000\n'4'.100000\n'5'1000000\n";
+	
+	int input;
+	
+	std::cin >> input;
+	
+	switch(input) {
+		case 1:
+			return Ten;
+		case 2:
+			return Thousand;
+		case 3:
+			return TenThousand;
+		case 4:
+			return HThousand;
+		case 5:
+			return Million;
+		default:
+			setBenchArraySize();
+	}
+};
+
+void Benchmark() {
+	
+	Sorter sorter = setAlgorithm();
+	BenchArraySize benchSize = setBenchArraySize();
+	char input;
+	bool benching = true;
+	Array<int> benchArray;
+	
+	benchArray.SetSize(benchSize);
+	
+	for(int i = 0; i < 100; i++){
+		makeRandom(benchArray.GetArray(), Integer, benchSize);
+		sortArray(benchArray.GetArray(), sorter, benchSize);
+	}
+}
