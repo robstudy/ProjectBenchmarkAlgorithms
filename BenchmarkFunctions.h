@@ -119,7 +119,7 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchShuffl
 	} 
 	else if (benchType == FullShuffle) {
 		
-		makeRandom(A, arrayType, benchType);
+		makeRandom(A, arrayType, arraySize);
 	}
 	else if (benchType == Reverse) {
 		
@@ -139,8 +139,8 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchShuffl
 		}
 	}
 	else if ( benchType == TenPercentUnsorted) {
-		
-		makeRandom(A, arrayType, benchType%10);	
+		orderArray(A,arrayType, arraySize, Sorted);
+		makeRandom(A, arrayType, arraySize%10);	
 	}
 };
 
@@ -149,22 +149,22 @@ Sorter setAlgorithm(){
 	
 	std::cout << "Choose an algorithm to benchmark:\n1. Bubble\n2. Insertion\n3. Selection\n4. Merge\n5. Quick\n";
 	
-	int input;
+	char input;
 	
 	std::cin >> input;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cin.clear();
 	
 	switch (input){
-		case 1:
+		case '1':
 			return Bubble;
-		case 2:
+		case '2':
 			return Insertion;
-		case 3:
+		case '3':
 			return Selection;
-		case 4:
+		case '4':
 			return Merge;
-		case 5:
+		case '5':
 			return Quick;
 		default:
 			return Quick;
@@ -177,22 +177,22 @@ BenchArraySize setBenchArraySize(){
 	
 	std::cout << "Choose an array size\n1. 10\n2. 1000\n3. 10000\n4. 100000\n5. 1000000\n";
 	
-	int input;
+	char input;
 	
 	std::cin >> input;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cin.clear();
 	
 	switch(input) {
-		case 1:
+		case '1':
 			return Ten;
-		case 2:
+		case '2':
 			return Thousand;
-		case 3:
+		case '3':
 			return TenThousand;
-		case 4:
+		case '4':
 			return HThousand;
-		case 5:
+		case '5':
 			return Million;
 		default:
 			return Ten;
@@ -202,7 +202,7 @@ BenchArraySize setBenchArraySize(){
 //Set BenchShuffleType Sorted, FullShuffle, Reverse, TenPercentUnsorted and return it
 BenchShuffleType setBenchShuffleType(){
 	
-	int input;
+	char input;
 	
 	std::cout << "Choose shuffle type:\n1. Sorted\n2. FullShuffle\n3. Reverse\n4. TenPercentUnsorted\n";
 	
@@ -211,13 +211,13 @@ BenchShuffleType setBenchShuffleType(){
 	std::cin.clear();
 	
 	switch(input) {
-		case 1:
+		case '1':
 			return Sorted;
-		case 2:
+		case '2':
 			return FullShuffle;
-		case 3: 
+		case '3': 
 			return Reverse;
-		case 4:
+		case '4':
 			return TenPercentUnsorted;
 		default:
 			return FullShuffle;
@@ -254,7 +254,7 @@ void Benchmark() {
 	
 	Sorter sorter = setAlgorithm();
 	
-	BenchArraySize benchSize = setBenchArraySize();
+	BenchArraySize benchArraySize = setBenchArraySize();
 	
 	BenchShuffleType shuffleType = setBenchShuffleType();
 	
@@ -262,13 +262,13 @@ void Benchmark() {
 	
 	Array<int> benchArray;
 	
-	arrayToSort.SetSize(benchSize);
+	arrayToSort.SetSize(benchArraySize);
 	
 	for(int i = 0; i < 100; i++){
 		
-		orderArray(arrayToSort.GetArray(), Integer, benchSize, shuffleType);
+		orderArray(arrayToSort.GetArray(), Integer, benchArraySize, shuffleType);
 		
-		benchArray.Insert(sortArray(arrayToSort.GetArray(), sorter, benchSize));
+		benchArray.Insert(sortArray(arrayToSort.GetArray(), sorter, benchArraySize));
 	}
 	
 	std::cout << "The average for this sorting algorithm is : " << benchArray.GetAverage() << std::endl;
