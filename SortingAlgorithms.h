@@ -107,7 +107,8 @@ void merge(T *A, int low, int mid, int high)
 	int n2 = high - mid;
 	
 	//temp arrays left and right
-	int L[n1], R[n2];
+	T* L = new T[n1];
+	T* R = new T[n2];
 	
 	//Copy data temp arrays L[] and R[]
 	for(i = 0; i < n1; i++)
@@ -150,6 +151,9 @@ void merge(T *A, int low, int mid, int high)
 		j++;
 		k++;
 	}
+	
+	delete[] R;
+	delete[] L;
 };
 
 template <typename T>
