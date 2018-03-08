@@ -87,10 +87,10 @@ int main()
 				else if(arrayType == Double) makeRandom(doubleArray.GetArray(), arrayType, arraySize);
 				break;
 			case 's':
-				if(arrayType == Char) sortArray(charArray.GetArray(), sortAlgorithm, arraySize);
-				else if(arrayType == Integer) sortArray(intArray.GetArray(), sortAlgorithm, arraySize);
-				else if(arrayType == Float) sortArray(floatArray.GetArray(), sortAlgorithm, arraySize);
-				else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
+				//if(arrayType == Char) sortArray(charArray.GetArray(), sortAlgorithm, arraySize);
+				//else if(arrayType == Integer) sortArray(intArray.GetArray(), sortAlgorithm, arraySize);
+				//else if(arrayType == Float) sortArray(floatArray.GetArray(), sortAlgorithm, arraySize);
+				//else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
 				break;
 			case 'q':
 				programLoop = false;

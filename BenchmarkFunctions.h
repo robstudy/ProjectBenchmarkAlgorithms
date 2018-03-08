@@ -36,7 +36,7 @@ void makeRandom(T *A, ArrayType arrayType, int size) {
 };	
 
 template <typename T>
-void sortArray(T *A, Sorter sortAlgorithm, int size) {
+int sortArray(T *A, Sorter sortAlgorithm, int size) {
 	switch(sortAlgorithm) {
 		case Insertion:
 			{
@@ -44,6 +44,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				InsertionSort(A, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
+				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
 			}
 			break;
 		case Selection:
@@ -52,6 +53,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				SelectionSort(A, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
+				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
 			}
 			break;
 		case Bubble:
@@ -60,6 +62,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				BubbleSort(A, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
+				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
 			}
 			break;
 		case Quick:
@@ -68,6 +71,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				QuickSort(A, 0, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " nanosecond\n";
+				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() ;
 			}
 			break;
 		case Merge:
@@ -76,6 +80,7 @@ void sortArray(T *A, Sorter sortAlgorithm, int size) {
 				MergeSort(A, 0, size-1);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
+				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
 			}
 			break;
 		default:
@@ -186,12 +191,16 @@ void Benchmark() {
 	BenchArraySize benchSize = setBenchArraySize();
 	char input;
 	bool benching = true;
+	Array<int> arrayToSort;
 	Array<int> benchArray;
 	
-	benchArray.SetSize(benchSize);
+	arrayToSort.SetSize(benchSize);
 	
 	for(int i = 0; i < 100; i++){
-		makeRandom(benchArray.GetArray(), Integer, benchSize);
-		sortArray(benchArray.GetArray(), sorter, benchSize);
+		makeRandom(arrayToSort.GetArray(), Integer, benchSize);
+		benchArray.Insert(sortArray(arrayToSort.GetArray(), sorter, benchSize));
 	}
+	
+	std::cout << "The average for this sorting algorithm is : " << benchArray.GetAverage() << std::endl;
+	std::cout << "The standard deviation is : " << benchArray.GetStandardDeviation() << std::endl;
 }
