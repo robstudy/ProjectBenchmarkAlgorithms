@@ -4,8 +4,6 @@
 #include "Array.h"
 #include "BenchmarkFunctions.h"
 
-int setArraySize();
-
 int main() 
 {
 	//input
@@ -14,6 +12,8 @@ int main()
 	std::cout << "Press 1 to go straight to benchmark test or enter anything to play with array and sorting algorithms\n";
 	
 	std::cin >> input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	if(input == '1') {
 		
@@ -24,6 +24,8 @@ int main()
 			std::cout << "Benchmark again?\n1. Yes\n2. No\n";
 			
 			std::cin >> input;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin.clear();
 			
 			if(input != '1') return 0;
 		}
@@ -45,19 +47,12 @@ int main()
 	
 	//Set Array type
 	arrayType = setArrayType();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
 	
 	//Set Sorting Algorithm 
 	sortAlgorithm = setAlgorithm();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
 	
 	//Set Size
-	arraySize = setArraySize();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
-	
+	arraySize = setBenchArraySize();
 	
 	switch(arrayType){
 		case Integer:
@@ -76,9 +71,13 @@ int main()
 	
 	//Play loop
 	while(playLoop){
+		
 		std::cout << "Choose the following:\n1. Benchmark\n2. Print Array\n3. Randomize Array\n4. Sort Array\n5. Choose Different Algorithm\n6. Quit\n";
+		
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin.clear();
+		
 		switch(input) {
 			case '5':
 				sortAlgorithm = setAlgorithm();
@@ -102,30 +101,9 @@ int main()
 				else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
 				break;
 			case '6':
-				playLoop = false;
+				return 0;
 			default:
 				break;
 		}
-	}
-	
-	return 0;
-};
-
-//Set Array Size
-int setArraySize() {
-	
-	int input;
-	
-	while(true)
-	{
-		std::cout << "Enter a valid array size!\n";
-		
-		std::cin >> input;
-		
-		if(input < 0) continue;
-		
-		std::cout << "Array size set to " << input << std::endl;
-		
-		return input;
 	}
 };

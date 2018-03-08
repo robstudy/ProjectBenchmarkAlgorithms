@@ -195,7 +195,7 @@ BenchArraySize setBenchArraySize(){
 		case 5:
 			return Million;
 		default:
-			return TenThousand;
+			return Ten;
 	}
 };
 
@@ -203,10 +203,8 @@ BenchArraySize setBenchArraySize(){
 BenchShuffleType setBenchShuffleType(){
 	
 	int input;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
 	
-	std::cout << "Choose shuffle type:\n1. Sorted\n2. FullShuffle\n3. Reverse\n4.TenPercentUnsorted\n";
+	std::cout << "Choose shuffle type:\n1. Sorted\n2. FullShuffle\n3. Reverse\n4. TenPercentUnsorted\n";
 	
 	std::cin >> input;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -259,10 +257,6 @@ void Benchmark() {
 	BenchArraySize benchSize = setBenchArraySize();
 	
 	BenchShuffleType shuffleType = setBenchShuffleType();
-	
-	char input;
-	
-	bool benching = true;
 	
 	Array<int> arrayToSort;
 	
