@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <ctime>
 #include <chrono>
 #include "Array.h"
 #include "BenchmarkFunctions.h"
@@ -46,9 +45,13 @@ int main()
 	
 	//Set Array type
 	arrayType = setArrayType();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	//Set Sorting Algorithm 
 	sortAlgorithm = setAlgorithm();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	//Set Size
 	arraySize = setArraySize();

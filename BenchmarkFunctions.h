@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <chrono>
+#include <limits>
 #include "SortingAlgorithms.h"
 #include "Array.h"
 
@@ -151,6 +152,8 @@ Sorter setAlgorithm(){
 	int input;
 	
 	std::cin >> input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	switch (input){
 		case 1:
@@ -164,7 +167,7 @@ Sorter setAlgorithm(){
 		case 5:
 			return Quick;
 		default:
-			setAlgorithm();
+			return Quick;
 	}
 };
 
@@ -177,6 +180,8 @@ BenchArraySize setBenchArraySize(){
 	int input;
 	
 	std::cin >> input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	switch(input) {
 		case 1:
@@ -190,7 +195,7 @@ BenchArraySize setBenchArraySize(){
 		case 5:
 			return Million;
 		default:
-			setBenchArraySize();
+			return TenThousand;
 	}
 };
 
@@ -198,10 +203,14 @@ BenchArraySize setBenchArraySize(){
 BenchShuffleType setBenchShuffleType(){
 	
 	int input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	std::cout << "Choose shuffle type:\n1. Sorted\n2. FullShuffle\n3. Reverse\n4.TenPercentUnsorted\n";
 	
 	std::cin >> input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	switch(input) {
 		case 1:
@@ -213,7 +222,7 @@ BenchShuffleType setBenchShuffleType(){
 		case 4:
 			return TenPercentUnsorted;
 		default:
-			setBenchShuffleType();
+			return FullShuffle;
 	}
 };
 
@@ -225,6 +234,8 @@ ArrayType setArrayType() {
 	std::cout << "Choose array type:\n1. Integer\n2. Float\n3. Double\n";
 	
 	std::cin >> input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.clear();
 	
 	switch(input) {
 		case 1:
@@ -234,7 +245,7 @@ ArrayType setArrayType() {
 		case 3:
 			return Double;
 		default:
-			setArrayType;
+			return Integer;
 	}
 };
 
