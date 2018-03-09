@@ -251,6 +251,8 @@ ArrayType setArrayType() {
 //Takes all benchmark inputs, outputs average and standard deviation at the end of 100 benchmark tests
 void Benchmark() {
 	
+	std::string arrayTypeString, algorithmString, shuffleTypeString;
+	
 	ArrayType arrayType = setArrayType();
 	
 	Sorter sorter = setAlgorithm();
@@ -264,15 +266,57 @@ void Benchmark() {
 	Array<double> arrayToSortDouble;
 	Array<int> benchArray;
 	
+	switch(sorter) {
+		case Bubble:
+			algorithmString = "bubble";
+			break;
+		case Insertion:
+			algorithmString = "insertion";
+			break;
+		case Selection:
+			algorithmString = "selection";
+			break;
+		case Merge:
+			algorithmString = "merge";
+			break;
+		case Quick:
+			algorithmString = "quick";
+			break;
+		default:
+			algorithmString = "no";
+			break;
+	}
+	
+	switch(shuffleType) {
+		case Sorted:
+			shuffleTypeString = "sorted order";
+			break;
+		case FullShuffle:
+			shuffleTypeString = "fully shuffled";
+			break;
+		case Reverse:
+			shuffleTypeString = "reverse order";
+			break;
+		case TenPercentUnsorted:
+			shuffleTypeString = "ten percent shuffled";
+			break;
+		default:
+			shuffleTypeString = "no sorting order picked";
+			break;
+	}
+	
 	switch(arrayType) {
 		case Integer:
 			arrayToSortInt.SetSize(benchArraySize);
+			arrayTypeString = "int";
 			break;
 		case Float:
 			arrayToSortFloat.SetSize(benchArraySize);
+			arrayTypeString = "float";
 			break;
 		case Double:
 			arrayToSortDouble.SetSize(benchArraySize);
+			arrayTypeString = "double";
 			break;
 		default:
 			break;
@@ -301,7 +345,9 @@ void Benchmark() {
 			break;
 	}
 	
-	std::cout << "The average for this sorting algorithm is : " << benchArray.GetAverage() << std::endl;
+	std::cout << "The average for " << algorithmString << " sort algorithm while array is " << shuffleTypeString 
+		<< " with size " << benchArraySize << " " << arrayTypeString << " array is : "
+			<< benchArray.GetAverage() << " microseconds!\n";
 	
 	std::cout << "The standard deviation is : " << benchArray.GetStandardDeviation() << std::endl;
 };

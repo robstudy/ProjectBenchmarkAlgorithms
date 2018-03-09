@@ -92,9 +92,9 @@ int main()
 				Benchmark();
 				break;
 			case '3':
-				if(arrayType == Integer) makeRandom(intArray.GetArray(), arrayType, arraySize);
-				else if(arrayType == Float) orderArray(floatArray.GetArray(), Float, arraySize, arraySorter);
-				else if(arrayType == Double) makeRandom(doubleArray.GetArray(), arrayType, arraySize);
+				if(arrayType == Integer) orderArray(intArray.GetArray(), arrayType, arraySize, arraySorter);
+				else if(arrayType == Float) orderArray(floatArray.GetArray(), arrayType, arraySize, arraySorter);
+				else if(arrayType == Double) orderArray(doubleArray.GetArray(), arrayType, arraySize, arraySorter);
 				break;
 			case '4':
 				arraySorter = setBenchShuffleType();
