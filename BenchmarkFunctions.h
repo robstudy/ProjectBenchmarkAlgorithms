@@ -332,7 +332,7 @@ void Benchmark() {
 		case Float:
 			for(int i = 0; i < 100; i++){
 				orderArray(arrayToSortFloat.GetArray(), Float, benchArraySize, shuffleType);
-				benchArray.Insert(sortArray(arrayToSortFloat.GetArray(), sorter, shuffleType));
+				benchArray.Insert(sortArray(arrayToSortFloat.GetArray(), sorter, benchArraySize));
 			}
 			break;
 		case Double:
@@ -346,7 +346,7 @@ void Benchmark() {
 	}
 	
 	std::cout << "The average for " << algorithmString << " sort algorithm while array is " << shuffleTypeString 
-		<< " with size " << benchArraySize << " " << arrayTypeString << " array is : "
+		<< " with size " << benchArraySize << " " << arrayTypeString << " array is: "
 			<< benchArray.GetAverage() << " microseconds!\n";
 	
 	std::cout << "The standard deviation is : " << benchArray.GetStandardDeviation() << std::endl;
