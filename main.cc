@@ -70,7 +70,9 @@ int main()
 	//Play loop
 	while(true){
 		
-		std::cout << "Choose the following:\n1. Print Array\n2. Sort Array\n3. Randomize Array\n4. Set Sorter\n5. Choose Different Algorithm\n6. Benchmark\n7. Quit\n";
+		std::cout << "Choose the following:\n1. Print Array\n2. Sort Array\n"
+			<< "3. Randomize Array\n4. Set Sorter\n5. Choose Different Algorithm\n"
+			<< "6. New Array Size\n7. Benchmark\n8. Quit\n";
 		
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -103,9 +105,15 @@ int main()
 				sortAlgorithm = setAlgorithm();
 				break;
 			case '6':
-				Benchmark();
+				arraySize = setBenchArraySize();
+				if(arrayType == Integer) intArray.SetSize(arraySize);
+				else if(arrayType == Float) floatArray.SetSize(arraySize);
+				else if(arrayType == Double) doubleArray.SetSize(arraySize);
 				break;
 			case '7':
+				Benchmark();
+				break;
+			case '8':
 				return 0;
 			default:
 				break;
