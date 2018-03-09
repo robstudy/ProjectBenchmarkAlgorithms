@@ -34,6 +34,7 @@ int main()
 	//enums for sorting and array type;
 	ArrayType arrayType;
 	Sorter sortAlgorithm;
+	BenchShuffleType arraySorter;
 	
 	//Initialize 3 types of array size 0
 	Array<int> intArray;
@@ -43,11 +44,14 @@ int main()
 	//Set Array type
 	arrayType = setArrayType();
 	
+	//Set Sort Type
+	arraySorter = setBenchShuffleType();
+	
 	//Set Sorting Algorithm 
 	sortAlgorithm = setAlgorithm();
 	
 	//Set Size
-	int arraySize = setBenchArraySize();
+	BenchArraySize arraySize = setBenchArraySize();
 	
 	switch(arrayType){
 		case Integer:
@@ -66,7 +70,7 @@ int main()
 	//Play loop
 	while(true){
 		
-		std::cout << "Choose the following:\n1. Print Array\n2. Sort Array\n3. Randomize Array\n4. Choose Different Algorithm\n5. Benchmark\n6. Quit\n";
+		std::cout << "Choose the following:\n1. Print Array\n2. Sort Array\n3. Randomize Array\n4. Set Sorter\n5. Choose Different Algorithm\n6. Benchmark\n7. Quit\n";
 		
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -89,16 +93,19 @@ int main()
 				break;
 			case '3':
 				if(arrayType == Integer) makeRandom(intArray.GetArray(), arrayType, arraySize);
-				else if(arrayType == Float) makeRandom(floatArray.GetArray(), arrayType, arraySize);
+				else if(arrayType == Float) orderArray(floatArray.GetArray(), Float, arraySize, arraySorter);
 				else if(arrayType == Double) makeRandom(doubleArray.GetArray(), arrayType, arraySize);
 				break;
 			case '4':
-				sortAlgorithm = setAlgorithm();
+				arraySorter = setBenchShuffleType();
 				break;
 			case '5':
-				Benchmark();
+				sortAlgorithm = setAlgorithm();
 				break;
 			case '6':
+				Benchmark();
+				break;
+			case '7':
 				return 0;
 			default:
 				break;

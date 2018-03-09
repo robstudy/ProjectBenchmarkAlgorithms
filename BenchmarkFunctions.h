@@ -76,7 +76,7 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 				QuickSort(A, 0, size);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " nanosecond\n";
+				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() ;
 			}
 			break;
@@ -139,8 +139,9 @@ void orderArray(T *A, ArrayType arrayType, BenchArraySize arraySize, BenchShuffl
 		}
 	}
 	else if ( benchType == TenPercentUnsorted) {
+		int tenPercent = arraySize * .1;
 		orderArray(A,arrayType, arraySize, Sorted);
-		makeRandom(A, arrayType, arraySize%10);	
+		makeRandom(A, arrayType, tenPercent);	
 	}
 };
 
@@ -250,7 +251,7 @@ ArrayType setArrayType() {
 //Takes all benchmark inputs, outputs average and standard deviation at the end of 100 benchmark tests
 void Benchmark() {
 	
-	//ArrayType arrayType = setArrayType();
+	ArrayType arrayType = setArrayType();
 	
 	Sorter sorter = setAlgorithm();
 	
@@ -258,17 +259,46 @@ void Benchmark() {
 	
 	BenchShuffleType shuffleType = setBenchShuffleType();
 	
-	Array<int> arrayToSort;
-	
+	Array<int> arrayToSortInt;
+	Array<float> arrayToSortFloat;
+	Array<double> arrayToSortDouble;
 	Array<int> benchArray;
 	
-	arrayToSort.SetSize(benchArraySize);
+	switch(arrayType) {
+		case Integer:
+			arrayToSortInt.SetSize(benchArraySize);
+			break;
+		case Float:
+			arrayToSortFloat.SetSize(benchArraySize);
+			break;
+		case Double:
+			arrayToSortDouble.SetSize(benchArraySize);
+			break;
+		default:
+			break;
+	}
 	
-	for(int i = 0; i < 100; i++){
-		
-		orderArray(arrayToSort.GetArray(), Integer, benchArraySize, shuffleType);
-		
-		benchArray.Insert(sortArray(arrayToSort.GetArray(), sorter, benchArraySize));
+	switch(arrayType) {
+		case Integer:
+			for(int i = 0; i < 100; i++){
+				orderArray(arrayToSortInt.GetArray(), Integer, benchArraySize, shuffleType);
+				benchArray.Insert(sortArray(arrayToSortInt.GetArray(), sorter, benchArraySize));
+			}
+			break;
+		case Float:
+			for(int i = 0; i < 100; i++){
+				orderArray(arrayToSortFloat.GetArray(), Float, benchArraySize, shuffleType);
+				benchArray.Insert(sortArray(arrayToSortFloat.GetArray(), sorter, shuffleType));
+			}
+			break;
+		case Double:
+			for(int i = 0; i < 100; i++){
+				orderArray(arrayToSortDouble.GetArray(), Double, benchArraySize, shuffleType);
+				benchArray.Insert(sortArray(arrayToSortDouble.GetArray(), sorter, benchArraySize));
+			}
+			break;
+		default:
+			break;
 	}
 	
 	std::cout << "The average for this sorting algorithm is : " << benchArray.GetAverage() << std::endl;
