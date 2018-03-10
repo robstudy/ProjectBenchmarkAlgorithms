@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <limits>
+#include <fstream>
 #include "SortingAlgorithms.h"
 #include "Array.h"
 
@@ -248,6 +249,18 @@ ArrayType setArrayType() {
 	}
 };
 
+//Save Benchmarks into txt file 
+void save(std::string data) {
+	
+	std::ofstream myfile("benchmarks.txt", std::ios::app | std::ios::out);
+	
+	myfile << std::endl;
+		
+	myfile << data;
+	
+	myfile.close();
+}
+
 //Takes all benchmark inputs, outputs average and standard deviation at the end of 100 benchmark tests
 void Benchmark() {
 	
@@ -345,9 +358,13 @@ void Benchmark() {
 			break;
 	}
 	
-	std::cout << "The average for " << algorithmString << " sort algorithm while array is " << shuffleTypeString 
-		<< " with size " << benchArraySize << " " << arrayTypeString << " array is: "
-			<< benchArray.GetAverage() << " microseconds!\n";
+	std::string data = "\nThe average for " + algorithmString + " sort algorithm while array is " + shuffleTypeString
+		+ " with size " + std::to_string(benchArraySize) + " " + arrayTypeString + " array is: "
+			+ std::to_string(benchArray.GetAverage()) + " microseconds!\n\n";
+			
+	std::cout << data;
+	
+	save(data);
 	
 	std::cout << "The standard deviation is : " << benchArray.GetStandardDeviation() << std::endl;
 };
