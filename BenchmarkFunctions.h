@@ -250,15 +250,22 @@ ArrayType setArrayType() {
 };
 
 //Save Benchmarks into txt file 
-void save(std::string data) {
+void save(std::string data,std::string sdata) {
 	
-	std::ofstream myfile("benchmarks.txt", std::ios::app | std::ios::out);
+	std::ofstream myfile("benchmarks.txt", std::ios::app);
 	
-	myfile << std::endl;
+	if(myfile.is_open()){
+		myfile << std::endl;
 		
-	myfile << data;
+		myfile << data;
 	
-	myfile.close();
+		myfile << std::endl;
+	
+		myfile << sdata;
+	
+		myfile.close();
+	}
+	else std::cout << "Unable to open file\n";
 }
 
 //Takes all benchmark inputs, outputs average and standard deviation at the end of 100 benchmark tests
@@ -362,9 +369,11 @@ void Benchmark() {
 		+ " with size " + std::to_string(benchArraySize) + " " + arrayTypeString + " array is: "
 			+ std::to_string(benchArray.GetAverage()) + " microseconds!\n\n";
 			
+	std::string sdata = "The standard deviation is: " + std::to_string(benchArray.GetStandardDeviation()) + "\n\n";
+			
 	std::cout << data;
 	
-	save(data);
+	std::cout << sdata;
 	
-	std::cout << "The standard deviation is : " << benchArray.GetStandardDeviation() << std::endl;
+	save(data, sdata);
 };
