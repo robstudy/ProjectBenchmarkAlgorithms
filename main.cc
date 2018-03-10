@@ -1,6 +1,4 @@
 #include <iostream>
-#include <algorithm>
-#include <chrono>
 #include "Array.h"
 #include "BenchmarkFunctions.h"
 
@@ -84,14 +82,10 @@ int main()
 				else if(arrayType == Float) floatArray.Display();
 				else if(arrayType == Double) doubleArray.Display();
 				break;
-				sortAlgorithm = setAlgorithm();
-				break;
 			case '2':
 				if(arrayType == Integer) sortArray(intArray.GetArray(), sortAlgorithm, arraySize);
 				else if(arrayType == Float) sortArray(floatArray.GetArray(), sortAlgorithm, arraySize);
 				else if(arrayType == Double) sortArray(doubleArray.GetArray(), sortAlgorithm, arraySize);
-				break;
-				Benchmark();
 				break;
 			case '3':
 				if(arrayType == Integer) orderArray(intArray.GetArray(), arrayType, arraySize, arraySorter);
