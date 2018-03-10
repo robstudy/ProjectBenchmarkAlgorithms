@@ -255,13 +255,8 @@ void save(std::string data,std::string sdata) {
 	std::ofstream myfile("benchmarks.txt", std::ios::app);
 	
 	if(myfile.is_open()){
-		myfile << std::endl;
 		
-		myfile << data;
-	
-		myfile << std::endl;
-	
-		myfile << sdata;
+		myfile << data << sdata;
 	
 		myfile.close();
 	}
@@ -365,11 +360,11 @@ void Benchmark() {
 			break;
 	}
 	
-	std::string data = "\nThe average for " + algorithmString + " sort algorithm while array is " + shuffleTypeString
+	std::string data = "The average for " + algorithmString + " sort algorithm while array is " + shuffleTypeString
 		+ " with size " + std::to_string(benchArraySize) + " " + arrayTypeString + " array is: "
-			+ std::to_string(benchArray.GetAverage()) + " microseconds!\n\n";
+			+ std::to_string(benchArray.GetAverage()) + " microseconds!\n";
 			
-	std::string sdata = "The standard deviation is: " + std::to_string(benchArray.GetStandardDeviation()) + "\n\n";
+	std::string sdata = "The standard deviation is: " + std::to_string(benchArray.GetStandardDeviation()) + "\n";
 			
 	std::cout << data;
 	
