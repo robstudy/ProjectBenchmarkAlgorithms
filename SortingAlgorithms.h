@@ -59,11 +59,11 @@ template <typename T>
 int partition(T *A, int first, int last)
 {
 	//pivot (Element to be placed at right position
-	int pivot = A[first];
-	int i = first;
+	int pivot = A[last];
+	int i = (first-1);
 	int j, temp;
 	
-	for(j = first+1; j < last; j++)
+	for(j = first; j <= (last-1); j++)
 	{
 		//If current element is smaller than or
 		//equal to pivot
@@ -78,12 +78,12 @@ int partition(T *A, int first, int last)
 	}
 	
 	//swap
-	temp = A[first];
-	A[first] = A[i];
-	A[i] = temp;
+	temp = A[last];
+	A[last] = A[i+1];
+	A[i+1] = temp;
 	
 	//return index
-	return i;
+	return (i+1);
 };
 
 template <typename T>
@@ -93,7 +93,7 @@ void QuickSort(T *A, int firstIndex, int lastIndex)
 	{
 		int pivotElement = partition(A, firstIndex, lastIndex);
 		
-		QuickSort(A, firstIndex, pivotElement);
+		QuickSort(A, firstIndex, pivotElement-1);
 		QuickSort(A, pivotElement+1, lastIndex);
 	}
 };

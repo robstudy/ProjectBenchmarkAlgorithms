@@ -75,7 +75,7 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 		case Quick:
 			{
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-				QuickSort(A, 0, size);
+				QuickSort(A, 0, size-1);
 				std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() ;
