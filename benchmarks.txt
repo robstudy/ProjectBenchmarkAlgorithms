@@ -1,0 +1,43 @@
+The average for bubble sort algorithm while array is sorted order with size 10 int array is: 0.010000 microseconds!
+The standard deviation is: 0.099499
+The average for bubble sort algorithm while array is sorted order with size 1000 int array is: 1303.890000 microseconds!
+The standard deviation is: 109.678885
+The average for bubble sort algorithm while array is sorted order with size 10000 int array is: 124191.280000 microseconds!
+The standard deviation is: 1872.457183
+The average for bubble sort algorithm while array is sorted order with size 100000 int array is: 12639437.890000 microseconds!
+The standard deviation is: 735077.694804
+The average for insertion sort algorithm while array is sorted order with size 10 int array is: 0.000000 microseconds!
+The standard deviation is: 0.000000
+The average for insertion sort algorithm while array is sorted order with size 1000 int array is: 4.420000 microseconds!
+The standard deviation is: 0.493559
+The average for insertion sort algorithm while array is sorted order with size 10000 int array is: 47.770000 microseconds!
+The standard deviation is: 0.420833
+The average for insertion sort algorithm while array is sorted order with size 100000 int array is: 483.080000 microseconds!
+The standard deviation is: 93.011900
+The average for insertion sort algorithm while array is sorted order with size 1000000 int array is: 4307.130000 microseconds!
+The standard deviation is: 446.566135
+The average for selection sort algorithm while array is sorted order with size 10 int array is: 0.000000 microseconds!
+The standard deviation is: 0.000000
+The average for selection sort algorithm while array is sorted order with size 1000 int array is: 1512.920000 microseconds!
+The standard deviation is: 153.266349
+The average for selection sort algorithm while array is sorted order with size 10000 int array is: 129970.210000 microseconds!
+The standard deviation is: 1326.104598
+The average for selection sort algorithm while array is sorted order with size 100000 int array is: 13363806.460000 microseconds!
+The standard deviation is: 454149.223188
+The average for merge sort algorithm while array is sorted order with size 10 int array is: 3.260000 microseconds!
+The standard deviation is: 2.291812
+The average for merge sort algorithm while array is sorted order with size 1000 int array is: 400.770000 microseconds!
+The standard deviation is: 8.573045
+The average for merge sort algorithm while array is sorted order with size 10000 int array is: 3700.340000 microseconds!
+The standard deviation is: 399.425293
+The average for merge sort algorithm while array is sorted order with size 100000 int array is: 37562.480000 microseconds!
+The standard deviation is: 1130.908020
+The average for merge sort algorithm while array is sorted order with size 1000000 int array is: 391610.520000 microseconds!
+The standard deviation is: 7569.224434
+The average for quick sort algorithm while array is sorted order with size 10 int array is: 0.000000 microseconds!
+The standard deviation is: 0.000000
+The average for quick sort algorithm while array is sorted order with size 1000 int array is: 2253.360000 microseconds!
+The standard deviation is: 279.448726
+The average for quick sort algorithm while array is sorted order with size 10000 int array is: 203044.190000 microseconds!
+The standard deviation is: 1662.934164
+

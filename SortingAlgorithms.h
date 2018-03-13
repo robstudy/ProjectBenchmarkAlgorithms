@@ -1,3 +1,12 @@
+//SWAP index
+template <typename T>
+void swap(T* A, int i, int j)
+{
+	T tmp = A[i];
+	A[i] = A[j];
+	A[j] = tmp;
+};
+
 //INSERTION SORT 
 template <typename T>
 void InsertionSort(T *A, int size)
@@ -18,7 +27,7 @@ void InsertionSort(T *A, int size)
 template <typename T>
 void SelectionSort(T *A, int size)
 {
-	int i, j, min_index, temp;
+	int i, j, min_index;
 	
 	//Move boundary of unsorted sub-array 
 	for(i = 0; i < size-1; i++)
@@ -29,9 +38,7 @@ void SelectionSort(T *A, int size)
 			if(A[j] < A[min_index]) min_index = j;
 		
 		//Swap minimum element with the first element
-		temp = A[min_index];
-		A[min_index] = A[i];
-		A[i] = temp;
+		swap(A, i, min_index);
 	}
 };
 
@@ -39,16 +46,13 @@ void SelectionSort(T *A, int size)
 template <typename T>
 void BubbleSort(T *A, int size)
 {
-	int temp;
 	for(int i = 0; i < size; i++)
 	{
 		for(int j = 0; j < (size-1-i); j++)
 		{
 			if(A[j] > A[j+1])
 			{
-				temp = A[j];
-				A[j] = A[j+1];
-				A[j+1] = temp;
+				swap(A, j, (j+1));
 			}
 		}
 	}
@@ -58,43 +62,25 @@ void BubbleSort(T *A, int size)
 template <typename T>
 int partition(T *A, int first, int last)
 {
-	//pivot (Element to be placed at right position
-	int pivot = A[last];
-	int i = (first-1);
-	int j, temp;
-	
-	for(j = first; j <= (last-1); j++)
+	for(int i = first; i <last; i++)
 	{
-		//If current element is smaller than or
-		//equal to pivot
-		if(A[j] <= pivot)
+		if(A[i] <= A[last])
 		{
-			i++; //increment index of smaller element
-			//swap values
-			temp = A[i];
-			A[i] = A[j];
-			A[j] = temp;
+			swap(A, first, i);
+			first++;
 		}
 	}
-	
-	//swap
-	temp = A[last];
-	A[last] = A[i+1];
-	A[i+1] = temp;
-	
-	//return index
-	return (i+1);
+	swap(A, first, last);
+	return first;
 };
 
 template <typename T>
 void QuickSort(T *A, int firstIndex, int lastIndex)
 {
 	if(firstIndex < lastIndex)
-	{
-		int pivotElement = partition(A, firstIndex, lastIndex);
-		
-		QuickSort(A, firstIndex, pivotElement-1);
-		QuickSort(A, pivotElement+1, lastIndex);
+	{	
+		QuickSort(A, firstIndex, partition(A, firstIndex, lastIndex)-1);
+		QuickSort(A, partition(A, firstIndex, lastIndex)+1, lastIndex);
 	}
 };
 
