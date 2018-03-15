@@ -62,6 +62,8 @@ void BubbleSort(T *A, int size)
 template <typename T>
 int partition(T *A, int first, int last)
 {
+	int randomPivot = first + rand()%(last-first);
+	swap(A, randomPivot, last);
 	for(int i = first; i <last; i++)
 	{
 		if(A[i] <= A[last])
@@ -79,8 +81,9 @@ void QuickSort(T *A, int firstIndex, int lastIndex)
 {
 	if(firstIndex < lastIndex)
 	{	
-		QuickSort(A, firstIndex, partition(A, firstIndex, lastIndex)-1);
-		QuickSort(A, partition(A, firstIndex, lastIndex)+1, lastIndex);
+		int pivot = partition(A, firstIndex, lastIndex);
+		QuickSort(A, firstIndex, pivot-1);
+		QuickSort(A, pivot+1, lastIndex);
 	}
 };
 
