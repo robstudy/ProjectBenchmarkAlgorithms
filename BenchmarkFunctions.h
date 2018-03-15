@@ -53,7 +53,6 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
 			}
-			break;
 		case Selection:
 			{
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -62,7 +61,6 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
 			}
-			break;
 		case Bubble:
 			{
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -71,7 +69,6 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
 			}
-			break;
 		case Quick:
 			{
 				std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -89,7 +86,6 @@ int sortArray(T *A, Sorter sortAlgorithm, int size) {
 				std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << " microseconds\n";
 				return std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
 			}
-			break;
 		default:
 			break;
 	}
@@ -249,7 +245,8 @@ ArrayType setArrayType() {
 	}
 };
 
-//Save Benchmarks into txt file 
+//Save Benchmarks into txt file
+//Two strings, one with algorithm choice, size, array sorter - second string for standard deviation
 void save(std::string data,std::string sdata) {
 	
 	std::ofstream myfile("benchmarks.txt", std::ios::app);
