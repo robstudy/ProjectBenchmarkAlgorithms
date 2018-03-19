@@ -62,9 +62,9 @@ void BubbleSort(T *A, int size)
 template <typename T>
 int partition(T *A, int first, int last)
 {
-	//random pivot avoids worst case scenario
-	int randomPivot = first + rand()%(last-first);
-	swap(A, randomPivot, last);
+	//mid pivot avoids worst case scenario 
+	int pivot = first + (last-first)/2;
+	swap(A, pivot, last);
 	for(int i = first; i <last; i++)
 	{
 		if(A[i] <= A[last])

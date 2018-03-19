@@ -89,6 +89,8 @@ The average for quick sort algorithm while array is fully shuffled with size 100
 The standard deviation is: 60189.297460
 The average for quick sort algorithm while array is fully shuffled with size 1000000 int array is: 10065500.720000 microseconds!
 The standard deviation is: 3878257.659635
+The average for quick sort algorithm while array is fully shuffled with size 1000000 int array is: 44355119.750000 microseconds!
+The standard deviation is: 583019.602467
 
 The average for bubble sort algorithm while array is reverse order with size 10 int array is: 0.010000 microseconds!
 The standard deviation is: 0.099499
@@ -171,8 +173,6 @@ The average for merge sort algorithm while array is ten percent shuffled with si
 The standard deviation is: 1518.779862
 The average for merge sort algorithm while array is ten percent shuffled with size 1000000 int array is: 395076.580000 microseconds!
 The standard deviation is: 4479.427345
-The average for quick sort algorithm while array is fully shuffled with size 10 int array is: 0.040000 microseconds!
-The standard deviation is: 0.195959
 The average for quick sort algorithm while array is ten percent shuffled with size 10 int array is: 0.000000 microseconds!
 The standard deviation is: 0.000000
 The average for quick sort algorithm while array is ten percent shuffled with size 1000 int array is: 100.360000 microseconds!
@@ -183,3 +183,56 @@ The average for quick sort algorithm while array is ten percent shuffled with si
 The standard deviation is: 949.195774
 The average for quick sort algorithm while array is ten percent shuffled with size 1000000 int array is: 519302.510000 microseconds!
 The standard deviation is: 8630.490118
+The average for quick sort algorithm while array is fully shuffled with size 1000000 int array is: 44355119.750000 microseconds!
+The standard deviation is: 583019.602467
+The average for selection sort algorithm while array is ten percent shuffled with size 1000000 int array is: 1376174195.520000 microseconds!
+The standard deviation is: 22230022.474510
+
+The average for quick sort algorithm while array is sorted order with size 1000000 int array is: 99722.460000 microseconds!
+The standard deviation is: 1204.129731
+The average for quick sort algorithm while array is sorted order with size 10 int array is: 0.020000 microseconds!
+The standard deviation is: 0.198997
+The average for quick sort algorithm while array is sorted order with size 1000 int array is: 58.910000 microseconds!
+The standard deviation is: 2.240960
+The average for quick sort algorithm while array is sorted order with size 10000 int array is: 727.360000 microseconds!
+The standard deviation is: 93.935778
+The average for quick sort algorithm while array is sorted order with size 100000 int array is: 8647.780000 microseconds!
+The standard deviation is: 382.208911
+The average for quick sort algorithm while array is sorted order with size 1000000 int array is: 100409.400000 microseconds!
+The standard deviation is: 1039.201472
+
+
+The average for quick sort algorithm while array is fully shuffled with size 10 int array is: 0.010000 microseconds!
+The standard deviation is: 0.099499
+The average for quick sort algorithm while array is fully shuffled with size 1000 int array is: 154.900000 microseconds!
+The standard deviation is: 5.818075
+The average for quick sort algorithm while array is fully shuffled with size 10000 int array is: 4885.500000 microseconds!
+The standard deviation is: 320.604507
+The average for quick sort algorithm while array is fully shuffled with size 100000 int array is: 377439.300000 microseconds!
+The standard deviation is: 2656.778611
+
+The average for quick sort algorithm while array is reverse order with size 10 int array is: 0.010000 microseconds!
+The standard deviation is: 0.099499
+The average for quick sort algorithm while array is reverse order with size 1000 int array is: 89.050000 microseconds!
+The standard deviation is: 3.561952
+The average for quick sort algorithm while array is reverse order with size 10000 int array is: 1017.970000 microseconds!
+The standard deviation is: 210.981016
+The average for quick sort algorithm while array is reverse order with size 100000 int array is: 10914.880000 microseconds!
+The standard deviation is: 1717.336509
+The average for quick sort algorithm while array is reverse order with size 1000000 int array is: 132504.510000 microseconds!
+The standard deviation is: 10107.106238
+
+The average for quick sort algorithm while array is ten percent shuffled with size 10 int array is: 0.000000 microseconds!
+The standard deviation is: 0.000000
+The average for quick sort algorithm while array is ten percent shuffled with size 1000 int array is: 55.800000 microseconds!
+The standard deviation is: 2.379075
+The average for quick sort algorithm while array is ten percent shuffled with size 10000 int array is: 956.820000 microseconds!
+The standard deviation is: 206.190852
+The average for quick sort algorithm while array is ten percent shuffled with size 100000 int array is: 14803.620000 microseconds!
+The standard deviation is: 2353.638060
+The average for quick sort algorithm while array is ten percent shuffled with size 1000000 int array is: 568554.250000 microseconds!
+The standard deviation is: 46449.648463
+
+
+The average for quick sort algorithm while array is fully shuffled with size 1000000 int array is: 44005580.590000 microseconds!
+The standard deviation is: 38870740.844524
